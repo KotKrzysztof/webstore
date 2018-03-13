@@ -1,2 +1,3 @@
 # webstore
-Web application in Spring with tests JUnit.
+Online store in Spring technology using the Hibernate framework to manage the database.
+
