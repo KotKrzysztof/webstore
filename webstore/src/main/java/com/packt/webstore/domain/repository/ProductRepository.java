@@ -9,5 +9,5 @@ public interface ProductRepository {
 	List <Product> getProductsByCategory(String category);
 	Product getProductById(String productId);
 	
-	Set<Product> getProductsByFilter(Map<String, List<String>> filterParams);
+	Set<Product> getProductsByFilter(Map<String, List<String>> filterParams); 
 }
