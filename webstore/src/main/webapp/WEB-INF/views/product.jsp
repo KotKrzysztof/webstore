@@ -19,6 +19,11 @@
 	<section class="container">
 		<div class="row">
 			<div class="col-md-5">
+				<img
+					src="<c:url value="/resource/images/${product.productId}.png"></c:url>"
+					alt="image" style="width: 100%" />
+			</div>
+			<div class="col-md-5">
 				<h3>${product.name}</h3>
 				<p>${product.description}</p>
 				<p>
@@ -33,7 +38,7 @@
 				<p>
 					<strong>Liczba sztuk w magazynie</strong>: ${product.unitsInStock}
 				</p>
-				<h4>${product.unitPrice} PLN</h4>
+				<h4>${product.unitPrice}PLN</h4>
 				<p>
 					<a href="#" class="btn btn-warning btn-large"> <span
 						class="glyphicon-shopping-cart glyphicon"></span> Kup teraz
