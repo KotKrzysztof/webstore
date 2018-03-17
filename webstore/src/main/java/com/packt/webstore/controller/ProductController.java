@@ -108,7 +108,7 @@ public class ProductController {
 	@InitBinder
 	public void initialseBinder(WebDataBinder binder) {
 		binder.setAllowedFields("productId", "name", "unitPrice", "description", "manufacturer", "category",
-				"unitsInStock", "condition", "productImage");
+				"unitsInStock", "condition", "productImage", "language");
 	}
 
 	@ExceptionHandler(ProductNotFoundException.class)
