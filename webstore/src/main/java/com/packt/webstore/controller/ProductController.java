@@ -1,7 +1,10 @@
 package com.packt.webstore.controller;
 
+import java.io.File;
 import java.util.List;
 import java.util.Map;
+
+import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -16,6 +19,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.packt.webstore.domain.Product;
 import com.packt.webstore.service.ProductService;
@@ -66,18 +70,35 @@ public class ProductController {
 	}
 
 	@RequestMapping(value = "/add", method = RequestMethod.POST)
-	public String processAddNewProductForm(@ModelAttribute("newProduct") Product productToBeAdded, BindingResult result) {
+	public String processAddNewProductForm(@ModelAttribute("newProduct") Product productToBeAdded, BindingResult result,
+			HttpServletRequest request) {
 		String[] suppressedFields = result.getSuppressedFields();
-		if ( suppressedFields.length > 0) {
-			throw new RuntimeException("Proœna wi¹zania niedozwolonych  pól: " + StringUtils.arrayToCommaDelimitedString(suppressedFields));
+
+		if (suppressedFields.length > 0) {
+			throw new RuntimeException("Proœna wi¹zania niedozwolonych  pól: "
+					+ StringUtils.arrayToCommaDelimitedString(suppressedFields));
 		}
+
+		MultipartFile productImage = productToBeAdded.getProductImage();
+		String rootDirectory = request.getSession().getServletContext().getRealPath("/");
+
+		if (productImage != null && !productImage.isEmpty()) {
+			try {
+				productImage.transferTo(
+						new File(rootDirectory + "resources\\images\\" + productToBeAdded.getProductId() + ".png"));
+			} catch (Exception e) {
+				throw new RuntimeException("Próba zapisu obrazka zakoñczona niepowodzeniem", e);
+			}
+		}
+
 		productService.addProduct(productToBeAdded);
 		return "redirect:/products";
 	}
-	
+
 	@InitBinder
 	public void initialseBinder(WebDataBinder binder) {
-		binder.setDisallowedFields("unitsInOrder", "discontinued");
+		binder.setAllowedFields("productId", "name", "unitPrice", "description", "manufacturer", "category",
+				"unitsInStock", "condition", "productImage");
 	}
 
 }
