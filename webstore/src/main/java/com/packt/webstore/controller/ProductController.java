@@ -13,21 +13,14 @@ import org.springframework.ui.Model;
 import org.springframework.util.StringUtils;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.WebDataBinder;
-import org.springframework.web.bind.annotation.ExceptionHandler;
-import org.springframework.web.bind.annotation.InitBinder;
-import org.springframework.web.bind.annotation.MatrixVariable;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.packt.webstore.domain.Product;
-import com.packt.webstore.exception.NoProductsFoundUnderCategoryException;
-import com.packt.webstore.exception.ProductNotFoundException;
+import com.packt.webstore.exception.*;
 import com.packt.webstore.service.ProductService;
+import com.packt.webstore.validator.UnitsInStockValidator;
 
 @Controller
 @RequestMapping("/products")
@@ -35,6 +28,9 @@ public class ProductController {
 
 	@Autowired
 	private ProductService productService;
+	
+	@Autowired
+	private UnitsInStockValidator unitsInStockValidator;
 
 	@RequestMapping
 	public String list(Model model) {
@@ -114,6 +110,7 @@ public class ProductController {
 	public void initialseBinder(WebDataBinder binder) {
 		binder.setAllowedFields("productId", "name", "unitPrice", "description", "manufacturer", "category",
 				"unitsInStock", "condition", "productImage", "language");
+		binder.setValidator(unitsInStockValidator);
 	}
 
 	@ExceptionHandler(ProductNotFoundException.class)
