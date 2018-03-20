@@ -36,7 +36,7 @@ public class Product {
 	private long unitsInOrder;
 	private boolean discontinued;
 	private String condition;
-	//@JsonIgnore 
+	@JsonIgnore 
 	private MultipartFile  productImage;
 
 	public Product() {
@@ -77,7 +77,7 @@ public class Product {
 		return description;
 	}
 
-	//@XmlTransient  
+	@XmlTransient  
 	public MultipartFile getProductImage() {
 		return productImage;
 	}
