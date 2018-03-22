@@ -9,7 +9,6 @@ public class CartItem {
 	private BigDecimal totalPrice;
 	
 	public CartItem() {
-		// TODO Auto-generated constructor stub
 	}
 	
 	public CartItem(Product product) {
