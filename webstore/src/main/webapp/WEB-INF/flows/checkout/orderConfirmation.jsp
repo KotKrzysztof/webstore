@@ -13,14 +13,6 @@
 </head>
 
 <body>
-
-	<section>
-		<div class="jumbotron">
-			<div class="container">
-				<h1>Zamowienie</h1>
-				<p>Podsumowanie</p>
-			</div>
-		</div>
 	</section>
 	<div class="container">
 		<div class="row">

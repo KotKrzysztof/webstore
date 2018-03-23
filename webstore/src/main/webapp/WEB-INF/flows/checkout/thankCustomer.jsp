@@ -11,17 +11,6 @@
 </head>
 <body>
 	<section>
-		<div class="jumbotron">
-			<div class="container">
-				<h1 class="alert alert-danger"> Zamowienie zostalo zlozone</h1>
-				<p>Dziekujemy za zlozone zamowienie. Postaramy sie je wyslac w jak najkrotszym czasie, po: 
-				<fmt:formatDate type="date"	value="${order.shippingDetail.shippingDate}" /></p>
-				<p>Numer twojego zamowienia ${order.orderId}</p>
-			</div>
-		</div>
-	</section>
-
-	<section>
 		<div class="container">
 			<p>
 				<a href="<spring:url value="/products" />" class="btn btn-primary">

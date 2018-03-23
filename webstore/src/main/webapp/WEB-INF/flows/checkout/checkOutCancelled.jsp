@@ -9,15 +9,6 @@
 </head>
 <body>
 	<section>
-		<div class="jumbotron">
-			<div class="container">
-				<h1 class="alert alert-danger">check out cancelled</h1>
-				<p>Your Check out process cancelled! you may continue shopping..</p>
-			</div>
-		</div>
-	</section>
-
-	<section>
 		<div class="container">
 			<p>
 				<a href="<spring:url value="/products" />" class="btn btn-primary">

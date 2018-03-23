@@ -10,19 +10,6 @@
 <title>Produkty</title>
 </head>
 <body>
-	<section>
-		<div class="jumbotron">
-			<div class="container">
-				<h1>Produkty</h1>
-				<p>Dodaj produkty</p>
-			</div>
-			<a href="<c:url value="/j_spring_security_logout" />" class="btn btn-danger btn-mini pull-right">wyloguj</a>	
-			<div class="pull-right" style="padding-right:50px">
-				<a href="?language=pl" >polski</a>|<a href="?language=en" >angielski</a>					
-			</div>
-			
-		</div>
-	</section>
 	<section class="container">
 		<form:form  modelAttribute="newProduct" class="form-horizontal" enctype="multipart/form-data">
 			<fieldset>

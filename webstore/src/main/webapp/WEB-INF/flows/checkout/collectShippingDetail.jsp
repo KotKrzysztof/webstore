@@ -10,14 +10,6 @@
 <title>Customer</title>
 </head>
 <body>
-	<section>
-		<div class="jumbotron">
-			<div class="container">
-				<h1>Wysylka</h1>
-				<p>Adres do wysylki</p>
-			</div>
-		</div>
-	</section>
 	<section class="container">
 		<form:form modelAttribute="order.shippingDetail" class="form-horizontal">
 			<fieldset>

@@ -10,14 +10,6 @@
 <title>Customer</title>
 </head>
 <body>
-	<section>
-		<div class="jumbotron">
-			<div class="container">
-				<h1>Klient</h1>
-				<p>Dane kupujacego</p>
-			</div>
-		</div>
-	</section>
 	<section class="container">
 		<form:form modelAttribute="order.customer" class="form-horizontal">
 			<fieldset>
