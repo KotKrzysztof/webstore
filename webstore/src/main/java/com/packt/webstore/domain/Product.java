@@ -1,5 +1,6 @@
 package com.packt.webstore.domain;
 
+import java.io.Serializable;
 import java.math.BigDecimal;
 
 import javax.validation.constraints.Digits;
@@ -16,7 +17,9 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.packt.webstore.validator.ProductId;
 
 @XmlRootElement 
-public class Product {
+public class Product implements Serializable{
+
+	private static final long serialVersionUID = 3678107792576131001L;
 
 	@Pattern(regexp="P[1-9]+", message="{Pattern.Product.productId.validation}")
 	@ProductId 
@@ -147,10 +150,51 @@ public class Product {
 		if (getClass() != obj.getClass())
 			return false;
 		Product other = (Product) obj;
+		if (category == null) {
+			if (other.category != null)
+				return false;
+		} else if (!category.equals(other.category))
+			return false;
+		if (condition == null) {
+			if (other.condition != null)
+				return false;
+		} else if (!condition.equals(other.condition))
+			return false;
+		if (description == null) {
+			if (other.description != null)
+				return false;
+		} else if (!description.equals(other.description))
+			return false;
+		if (discontinued != other.discontinued)
+			return false;
+		if (manufacturer == null) {
+			if (other.manufacturer != null)
+				return false;
+		} else if (!manufacturer.equals(other.manufacturer))
+			return false;
+		if (name == null) {
+			if (other.name != null)
+				return false;
+		} else if (!name.equals(other.name))
+			return false;
 		if (productId == null) {
 			if (other.productId != null)
 				return false;
 		} else if (!productId.equals(other.productId))
+			return false;
+		if (productImage == null) {
+			if (other.productImage != null)
+				return false;
+		} else if (!productImage.equals(other.productImage))
+			return false;
+		if (unitPrice == null) {
+			if (other.unitPrice != null)
+				return false;
+		} else if (!unitPrice.equals(other.unitPrice))
+			return false;
+		if (unitsInOrder != other.unitsInOrder)
+			return false;
+		if (unitsInStock != other.unitsInStock)
 			return false;
 		return true;
 	}
@@ -159,8 +203,17 @@ public class Product {
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result
-				+ ((productId == null) ? 0 : productId.hashCode());
+		result = prime * result + ((category == null) ? 0 : category.hashCode());
+		result = prime * result + ((condition == null) ? 0 : condition.hashCode());
+		result = prime * result + ((description == null) ? 0 : description.hashCode());
+		result = prime * result + (discontinued ? 1231 : 1237);
+		result = prime * result + ((manufacturer == null) ? 0 : manufacturer.hashCode());
+		result = prime * result + ((name == null) ? 0 : name.hashCode());
+		result = prime * result + ((productId == null) ? 0 : productId.hashCode());
+		result = prime * result + ((productImage == null) ? 0 : productImage.hashCode());
+		result = prime * result + ((unitPrice == null) ? 0 : unitPrice.hashCode());
+		result = prime * result + (int) (unitsInOrder ^ (unitsInOrder >>> 32));
+		result = prime * result + (int) (unitsInStock ^ (unitsInStock >>> 32));
 		return result;
 	}
 
