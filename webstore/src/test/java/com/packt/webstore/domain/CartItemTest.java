@@ -21,3 +21,4 @@ public class CartItemTest {
 		Assert.assertEquals(iphone.getUnitPrice(), totalPrice);
 	}
 }
+ 
